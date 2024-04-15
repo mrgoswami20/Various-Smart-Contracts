@@ -1,0 +1,22 @@
+//SPDX-License-Identifier: Unlicense
+
+pragma solidity ^0.8.0;
+
+contract simpleStorage {
+    uint public storeData;
+
+    function set(uint data) public{
+        storeData = data;
+    }
+
+    function get() view public returns(uint){
+        return storeData;
+    }
+
+    function increment(uint n) public{
+        storeData+=n;
+    }
+    function decrement(uint n) public{
+        storeData-=n;
+    }
+}
