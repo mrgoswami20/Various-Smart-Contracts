@@ -1,0 +1,24 @@
+//SPDX-License-Identifier: Unlicensed
+
+pragma solidity ^0.8.0;
+
+contract bidder{
+    string public name = "Rohit";
+    uint public bidAmount;
+    uint public minBid = 100;
+    bool public eligible;
+
+    function setName(string memory nm) public{
+        name = nm;
+    }
+
+    function setBid(uint amount) public {
+        bidAmount = amount;
+    }
+
+    function checkEligiblity() public {
+        if(bidAmount > minBid) eligible = true;
+        else eligible = false;
+    }
+
+}
