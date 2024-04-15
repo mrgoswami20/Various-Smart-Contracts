@@ -1,0 +1,32 @@
+//SPDX-License-Identifier: Unlicensed
+
+pragma solidity ^0.8.0;
+
+contract minter{
+    address public owner;
+    mapping(address => uint) public balances;
+
+    event sent(address receiver, address sender, uint amount);
+
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner(){
+        require(msg.sender==owner, "You are not owner.");
+        _;
+    }
+
+    function mint(address receiver, uint amount) public onlyOwner{
+        balances[receiver] += amount;
+    }
+
+    function send(address receiver, uint amount) public onlyOwner{
+        require(balances[msg.sender] > amount, "You don't have amount");
+        balances[receiver] += amount;
+        balances[msg.sender] -= amount;
+        emit sent(msg.sender, receiver, amount);
+    }
+    
+}
