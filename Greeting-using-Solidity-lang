@@ -1,0 +1,27 @@
+//SPDX-License-Identifier: Unlicense
+
+// start with compiler version for our contract
+pragma solidity ^0.6.0;
+
+// contract name
+contract Greeting{
+
+    // create variable
+    string public yourName;
+
+    // Constructor function to initialize the variable
+    constructor() public {
+        yourName = "Rohit";
+    }
+
+    // set function to set name according to you by callinng set function
+    function set(string memory name) public{
+        yourName = name;
+    }
+
+    // get function to check name or see name
+    function get() view public returns(string memory){
+        return yourName;
+    }
+
+}
